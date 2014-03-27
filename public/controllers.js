@@ -4,23 +4,26 @@ controllers.controller('EmployeesController',function($scope, EmployeesService){
     $scope.empleados = EmployeesService.getEmployeeList();
 })
 
-.controller('UpsertEmployeesController',function($scope, $location, $routeParams, EmployeesService){
+.controller('UpsertEmployeesController',function($scope, $location, $routeParams, EmployeesService, employee){
 
     if ($routeParams.employeeId) {
+
+        $scope.employee = employee
+
         // If it has an id, is updating an employee...
-        $scope.loading = true;
+        //$scope.loading = true;
         //$scope.employeePromise = {promise: deferred.promise}        // To be accessible in the directive (look for best practice for this).
-        EmployeesService.obtainEmployeeData($routeParams.employeeId)
+        /*EmployeesService.obtainEmployeeData($routeParams.employeeId)
         .then(function(data) {
                 $scope.employee = data; // Employee found, so we set it as current employee.
                 $scope.loading = false;
-                $scope.$broadcast('employeeLoaded') // Just to see if it works....
+                //$scope.$broadcast('employeeLoaded') // Just to see if it works....
             },
             function(data){
                 $scope.loading = false;
                 alert('Error: ' + data);
             }
-        );
+        );*/
     }
 
     /**

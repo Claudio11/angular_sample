@@ -76,11 +76,14 @@ services
     function() {
 
         // Define the constructor function.
-        function Employee( name, salary ) {
+        function Employee( name, salary, employeeId ) {
 
             this.name = name;
             this.salary = salary;
-
+            this.rating = 0;
+            if (angular.isDefined(employeeId)) {
+                this.id = employeeId;
+            }
         }
 
         // Define the "instance" methods using the prototype
@@ -88,13 +91,14 @@ services
         Employee.prototype = {
 
             addUpVote: function() {
-                console.info('Up vote');
-                console.info(this);
+                this.rating++;
             },
 
             addDownVote: function() {
-                console.info('Down vote');
-            },
+                if (this.rating > 0) {
+                    this.rating--;
+                }
+            }
 
         };
 

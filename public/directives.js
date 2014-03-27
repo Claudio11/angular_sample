@@ -46,32 +46,30 @@ directives.directive('ngConfirm', [
 
 .directive('vote', [ 'Employee',
     function(Employee){
+        // Careful with coupled directive and controller (is not that bad because the directive needs to be used in this context,
+        // it will always need an employee (current)).
+        // It can be decoupled creating an isolated scope and passing the employee as "itemToVote" or something, in this
+        // case I will use the controller scope.
 
         return {
             restrict: 'AE',
             templateUrl: '/templates/vote.html',
+            scope: {
+                item: '='
+            },
             link: function (scope, element, attrs) {
+                // This will be always executed after all promises (resolve method of the routeprovider, public/app.js)
+                // are resolved...
+                console.info('Antes', scope.item);
+                scope.item = new Employee(scope.item.name, scope.item.salary, scope.item.id);
 
-                //scope.prom.then( function(){scope.created='yep';});
-                scope.$on('employeeLoaded', function(){
-                    console.info(scope.employee);
-                    console.info(Employee);
-
-                    var dummyEmp = new Employee(scope.employee.name, scope.employee.salary);
-                    console.info(dummyEmp);
-                });
-
-                // Careful with coupled directive and controller (is not that bad because the directive needs to be used in this context,
-                // it will always need an employee (current)).
-                // It can be decoupled creating an isolated scope and passing the employee as "itemToVote" or something, in this
-                // case I will use the controller scope.
-
+                console.info('Despues', scope.item);
                 scope.like = function(){
-                    console.info(scope.employee);
+                    scope.item.addUpVote();
                 }
 
                 scope.nope = function(){
-                    console.info('nop');   
+                    scope.item.addDownVote();
                 }
             }
         };
