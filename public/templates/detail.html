@@ -1,0 +1,27 @@
+<div class="detailContainer">
+    <h3>Employee</h3>
+    <form name="employeeForm" id="employeeForm" novalidate class="simple-form">
+        <div>
+            <span class="formKey">Name:</span>
+            <input name="name" type="text" ng-model="employee.name" required/>
+            <p class="error" ng-show="employeeForm.name.$dirty && employeeForm.name.$error.required">Required field</p>
+        </div>
+        <div>
+            <span class="formKey">Salary:</span>
+            <input name="salary" ng-model="employee.salary" required ng-numeric/>
+            <p class="error" ng-show="employeeForm.salary.$dirty && employeeForm.salary.$error.required">Required field</p>
+            <p class="error" ng-show="employeeForm.salary.$dirty && employeeForm.salary.$error.integer">Numeric field</p>
+        </div>
+        <div class="actionButtonContainer">
+            <a ng-confirm ng-show="employee.id" ng-click="delete()">Delete | </a>
+            <a ng-disabled="loading" ng-click="upsert(employeeForm)">Save</a>
+            <span ng-show="loading">Wait...</span>
+        </div>
+        <vote>
+
+        </vote>
+    </form>
+    <div class="actionContainer">
+        <a class="actionLink" ng-href="/#/list">Back to list</a>
+    </div>
+</div>    

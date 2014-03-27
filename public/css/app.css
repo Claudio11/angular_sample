@@ -1,0 +1,85 @@
+h3{
+    color: #394879;
+}
+
+#employeeList{
+    border-collapse: collapse;
+}
+#employeeList th{
+    font-size: 14px;
+    font-weight: normal;
+    color: #039;
+    border-bottom: 2px solid #6678b1;
+    padding: 10px 8px
+}
+
+#employeeList tbody tr td:last-child{
+    cursor: pointer;
+}
+
+#employeeList tbody tr:hover td:last-child, #employeeList tbody tr:hover a{
+    color: #009;
+}
+
+#employeeList td, #employeeList td a{
+    color: #669;
+    padding: 9px 8px 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+#employeeForm > div{
+    margin:10px 0;
+}
+
+.detailContainer{
+    width: 25%;
+    min-width: 250px;
+    box-sizing: border-box;
+}
+
+#employeeForm input{
+    color: #669;
+}
+
+
+.formKey{
+    font-size: 16px;
+    font-weight: normal;
+    color: #039;
+    display: inline-block;
+    width: 24%;
+}
+
+.formKey + input{
+    width: 73%;   
+}
+
+.error{
+    color: red;
+    font-size: 12px;
+    text-align: right;
+    margin: 0 15px 0 0;
+}
+
+.actionContainer{
+    margin-top: 15px;
+}
+
+.actionButtonContainer{
+    margin: 15px 0;
+    text-align: right;
+    padding-right: 15px;
+}
+
+    .actionButtonContainer a{
+        color: #009;
+        cursor: pointer;
+    }
+
+
+.auto-complete-list li{
+    list-style-type: none;
+}

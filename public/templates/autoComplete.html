@@ -1,0 +1,14 @@
+<div>
+	Search: 
+	<div class="bar">
+	    <input type="text" ng-model="mySearch" placeholder="Enter your search terms"/>
+	</div>
+
+	<ul ng-show="listVisible" class="auto-complete-list">
+
+	    <li ng-repeat="item in items | searchFor:mySearch">
+	        <span ng-click="setItem(item.name)">{{item.name}}</span>
+	    </li>
+	    
+	</ul>
+</div>	

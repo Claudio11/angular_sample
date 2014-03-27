@@ -1,0 +1,27 @@
+<h3>Employee</h3>
+<table id="employeeList">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Salary</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="empleado in empleados">
+            <td>{{empleado.id}}</td>
+            <td>{{empleado.name}}</td>
+            <td>{{empleado.salary}}</td>
+            <td><a ng-href="/#/edit/{{empleado.id}}">Edit</a></td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="actionContainer">
+    <a ng-href="/#/new">New employee</a>
+</div>
+
+<auto-complete items="empleados">
+
+</auto-complete>
