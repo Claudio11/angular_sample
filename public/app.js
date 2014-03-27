@@ -20,14 +20,16 @@ myAppModule.config(['$routeProvider',
         controller: 'UpsertEmployeesController',
         resolve: {
             employee: function($route, $q, EmployeesService){
-                var deferred   = $q.defer();
+
                 var employeeId = $route.current.params.employeeId;
+                var deferred   = $q.defer();
+                
                 EmployeesService.obtainEmployeeData(employeeId)
                 .then(function(data) {
                         deferred.resolve(data); 
                     },
                     function(data){
-                        deferred.reject();
+                        deferred.reject(data);
                     }
                 );
                 return deferred.promise;

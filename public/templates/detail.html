@@ -17,7 +17,7 @@
             <a ng-disabled="loading" ng-click="upsert(employeeForm)">Save</a>
             <span ng-show="loading">Wait...</span>
         </div>
-        <vote item="employee">
+        <vote item="employee" ng-if="employee.id">
 
         </vote>
     </form>
