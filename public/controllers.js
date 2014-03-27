@@ -5,7 +5,7 @@ controllers.controller('EmployeesController',function($scope, EmployeesService){
 })
 
 .controller('InsertEmployeesController',function($scope, $location, $routeParams, EmployeesService){
-    
+
     /**
      *  Method in charge of ask a service for something and handle the returned promise 
      *  TODO: Refactor code because was done to an upsert, after that it changed so this method is obsolete.
@@ -15,6 +15,7 @@ controllers.controller('EmployeesController',function($scope, EmployeesService){
      */
     var requestAndHandlePromise = function(servicePromise, successMessage){
         $scope.loading = true;
+        
         servicePromise($scope.employee)
         .then(function(data) {
                 $scope.loading = false;
