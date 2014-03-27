@@ -46,13 +46,12 @@ directives.directive('ngConfirm', [
 
 .directive('vote', [ 'Employee',
     function(Employee){
-        // Careful with coupled directive and controller (is not that bad because the directive needs to be used in this context,
-        // it will always need an employee (current)).
-        // It can be decoupled creating an isolated scope and passing the employee as "itemToVote" or something, in this
-        // case I will use the controller scope.
+        // Directive that allows upvote or downvote something, it needs to pass the object to vote in the item attribute of the directive.
+        // For now it's coupled with the controller because it creates an Employee object 
+        // TODO: Do it totally decoupled from the controller.
 
         return {
-            restrict: 'AE',
+            restrict: 'E',
             templateUrl: '/templates/vote.html',
             scope: {
                 item: '='
@@ -60,14 +59,15 @@ directives.directive('ngConfirm', [
             link: function (scope, element, attrs) {
                 // This will be always executed after all promises (resolve method of the routeprovider, public/app.js)
                 // are resolved...
-                console.info('Antes', scope.item);
+                // We converted employee to a factory employee....
                 scope.item = new Employee(scope.item.name, scope.item.salary, scope.item.id);
 
-                console.info('Despues', scope.item);
+                // User received a like...
                 scope.like = function(){
                     scope.item.addUpVote();
                 }
 
+                // User received a nope...
                 scope.nope = function(){
                     scope.item.addDownVote();
                 }
@@ -80,7 +80,7 @@ directives.directive('ngConfirm', [
     function ($timeout) {
         // Directive that autocompletes lists (the controller should pass the array in the "items" attribute).
         // This directive is completely decoupled from controllers, so it can be used anywhere.
-        // TODO Should check for names only after mySearch has 3 characters
+        // TODO: Should check for names only after mySearch has 3 characters
         return {
             restrict: 'EA',
             templateUrl: '/templates/autoComplete.html',

@@ -72,7 +72,7 @@ services
 })
 
 .factory("Employee", 
-
+    // Here we see where we should use services or factories, factory allows me to create an "object" that can be instantiated...
     function() {
 
         // Define the constructor function.
@@ -104,6 +104,5 @@ services
 
         // Return constructor
         return( Employee );
-
     }
 );

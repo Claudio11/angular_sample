@@ -13,12 +13,13 @@ myAppModule.config(['$routeProvider',
       }).
       when('/new', {
         templateUrl: 'templates/detail.html',
-        controller: 'UpsertEmployeesController'
+        controller: 'InsertEmployeesController'
       }).
       when('/edit/:employeeId', {
         templateUrl: 'templates/detail.html',
-        controller: 'UpsertEmployeesController',
+        controller: 'UpdateEmployeesController',
         resolve: {
+            
             employee: function($route, $q, EmployeesService){
 
                 var employeeId = $route.current.params.employeeId;
