@@ -14,7 +14,7 @@ controllers.controller('EmployeesController',function($scope, EmployeesService){
         .then(function(data) {
                 $scope.employee = data; // Employee found, so we set it as current employee.
                 $scope.loading = false;
-                //$broadcast('employeeLoaded') // Just to see if ti works....
+                $scope.$broadcast('employeeLoaded') // Just to see if it works....
             },
             function(data){
                 $scope.loading = false;

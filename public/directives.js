@@ -44,7 +44,7 @@ directives.directive('ngConfirm', [
     }
 ])
 
-.directive('vote', [
+.directive('vote', [ 'Employee',
     function(Employee){
 
         return {
@@ -52,13 +52,15 @@ directives.directive('ngConfirm', [
             templateUrl: '/templates/vote.html',
             link: function (scope, element, attrs) {
 
-               /* //scope.prom.then( function(){scope.created='yep';});
+                //scope.prom.then( function(){scope.created='yep';});
                 scope.$on('employeeLoaded', function(){
                     console.info(scope.employee);
+                    console.info(Employee);
+
+                    var dummyEmp = new Employee(scope.employee.name, scope.employee.salary);
+                    console.info(dummyEmp);
                 });
 
-                var dummyEmp = new Employee(scope.employee.name, scope.employee.salary);
-                console.info(dummyEmp);
                 // Careful with coupled directive and controller (is not that bad because the directive needs to be used in this context,
                 // it will always need an employee (current)).
                 // It can be decoupled creating an isolated scope and passing the employee as "itemToVote" or something, in this
@@ -70,7 +72,7 @@ directives.directive('ngConfirm', [
 
                 scope.nope = function(){
                     console.info('nop');   
-                }*/
+                }
             }
         };
     }
