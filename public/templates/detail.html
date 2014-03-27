@@ -17,7 +17,7 @@
             <a ng-disabled="loading" ng-click="upsert(employeeForm)">Save</a>
             <span ng-show="loading">Wait...</span>
         </div>
-        <vote item="employee" ng-if="employee.id">
+        <vote item="$parent.employee" ng-if="employee.id">
             <!-- Only to be displayed if there is an user been edited. -->
         </vote>
     </form>

@@ -15,9 +15,9 @@ app.use(function(req, res, next) {
 });
 
 var employees = [
-	{ id: 1, name: 'martin', salary: 1000 },
-	{ id: 2, name: 'pablo', salary: 2000 },
-	{ id: 3, name: 'federico', salary: 3000 }
+	{ id: 1, name: 'martin', salary: 1000, rating: 0 },
+	{ id: 2, name: 'pablo', salary: 2000, rating: 0 },
+	{ id: 3, name: 'federico', salary: 3000, rating: 0 }
 ];
 
 var nextEmployeeId = 4;
@@ -79,7 +79,8 @@ createAndAddNewEmployee = function(name, salary){
 	var newEmployee = {
 		id : nextEmployeeId++,
 		name : name,
-		salary : salary
+		salary : salary,
+		rating : 0
 	};
 	employees.push(newEmployee);
 	return;
@@ -170,6 +171,7 @@ app.put('/employees/:id', function (req, res) {
 
 	employee.name = body.name;
 	employee.salary = body.salary;
+	employee.rating = body.rating;
 
 	res.send("Employee updated correctly", 200);
 });

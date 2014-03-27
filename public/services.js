@@ -76,11 +76,11 @@ services
     function() {
 
         // Define the constructor function.
-        function Employee( name, salary, employeeId ) {
+        function Employee( name, salary, rating, employeeId ) {
 
             this.name = name;
             this.salary = salary;
-            this.rating = 0;
+            this.rating = rating;
             if (angular.isDefined(employeeId)) {
                 this.id = employeeId;
             }
