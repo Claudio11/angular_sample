@@ -1,6 +1,8 @@
 var directives = angular.module('CEPExample.directives',[],function(){});
 
-directives.directive('ngConfirm', [
+directives
+
+.directive('ngConfirm', [
     function(){
         // Emulates javascript confirm behavior.
         return {
@@ -107,3 +109,28 @@ directives.directive('ngConfirm', [
         }
     }
 ])
+
+.directive('csSpinner', [ 
+    function(){
+        // Directive in charge of display a swirling (from $http interceptors)
+        // This directive is created to display a single message on the page (it isnt created to be put inside a repeat 
+        // for example because each time the interceptors intercepts an http, will display the spinner (in a repeat will
+        // display a spinner for each element, that's not intuitive)).
+        return{
+            restrict: 'E',
+            template: '<span ng-show="spinner">Wait...</span>',
+            scope: {},
+            link: function(scope, elem, attrs){
+                scope.$on('startSpinner', function(evt){
+                    scope.spinner = true;
+                });
+
+                scope.$on('endSpinner', function(evt){
+                    scope.spinner = false;
+                });
+            }
+        }
+
+    }
+])
+;

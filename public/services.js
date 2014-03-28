@@ -117,4 +117,21 @@ services
         // Return constructor
         return( Employee );
     }
-]);
+])
+
+.factory('httpRequestInterceptor', function ($rootScope) {
+    // Interceptors to load a spinner while waiting for a response.
+    return {
+        request: function (config) {
+            $rootScope.$broadcast('startSpinner');
+            return config;
+        },
+
+        response: function (config) {
+            $rootScope.$broadcast('endSpinner');
+            return config;
+        }
+    }
+})
+
+;

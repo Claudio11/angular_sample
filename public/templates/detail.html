@@ -14,8 +14,8 @@
         </div>
         <div class="actionButtonContainer">
             <a ng-confirm ng-show="employee.id" ng-click="delete()">Delete | </a>
-            <a ng-disabled="loading" ng-click="upsert(employeeForm)">Save</a>
-            <span ng-show="loading">Wait...</span>
+            <a ng-click="upsert(employeeForm)">Save</a>
+            <cs-spinner></cs-spinner>
         </div>
         <vote item="$parent.employee" ng-if="employee.id">
             <!-- Only to be displayed if there is an user been edited. -->

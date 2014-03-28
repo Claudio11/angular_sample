@@ -4,8 +4,8 @@ var myAppModule = angular.module('CEPExample',
                                  'CEPExample.directives',
                                  'CEPExample.filters']);
 
-myAppModule.config(['$routeProvider',
-  function($routeProvider) {
+myAppModule.config(['$routeProvider', '$httpProvider',
+  function($routeProvider, $httpProvider) {
     $routeProvider.
       when('/list', {
         templateUrl: 'templates/list.html',
@@ -40,4 +40,8 @@ myAppModule.config(['$routeProvider',
       otherwise({
         redirectTo: '/list'
       });
-  }]);
+
+      // Add interceptors....
+      $httpProvider.interceptors.push('httpRequestInterceptor');
+  }
+]);

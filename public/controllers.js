@@ -14,16 +14,13 @@ controllers.controller('EmployeesController',function($scope, EmployeesService){
      *  @param successMessage Message to display if succeed.
      */
     var requestAndHandlePromise = function(servicePromise, successMessage){
-        $scope.loading = true;
-        
+
         servicePromise($scope.employee)
         .then(function(data) {
-                $scope.loading = false;
                 alert( successMessage );    // Could use data as success message, but not every server method has a response so had to pass it as parameter...
                 $location.path( "/#/list" );
             },
             function(data){
-                $scope.loading = false;
                 alert( 'Error: ' + data );
             }
         );
@@ -59,15 +56,13 @@ controllers.controller('EmployeesController',function($scope, EmployeesService){
      *  @param successMessage Message to display if succeed.
      */
     var requestAndHandlePromise = function(servicePromise, successMessage){
-        $scope.loading = true;
+
         servicePromise($scope.employee)
         .then(function(data) {
-                $scope.loading = false;
                 alert( successMessage );    // Could use data as success message, but not every server method has a response so had to pass it as parameter...
                 $location.path( "/#/list" );
             },
             function(data){
-                $scope.loading = false;
                 alert( 'Error: ' + data );
             }
         );
