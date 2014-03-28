@@ -120,6 +120,7 @@ services
 ])
 
 .factory('httpRequestInterceptor', function ($rootScope) {
+
     // Interceptors to load a spinner while waiting for a response.
     return {
         request: function (config) {
@@ -133,5 +134,4 @@ services
         }
     }
 })
-
 ;
