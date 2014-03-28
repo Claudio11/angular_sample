@@ -29,7 +29,6 @@ directives.directive('ngConfirm', [
         return {
             require: 'ngModel',
             link: function (scope, element, attrs, ctrl) {
-
                 ctrl.$parsers.push(function(value) {
                     if (INTEGER_REGEXP.test(value)) {
                         ctrl.$setValidity('integer', true);

@@ -71,9 +71,9 @@ services
     return EmployeesService;
 })
 
-.factory("Employee", 
+.factory("Employee", ['EmployeesService',
     // Here we see where we should use services or factories, factory allows me to create an "object" that can be instantiated...
-    function() {
+    function(EmployeesService) {
 
         // Define the constructor function.
         function Employee( name, salary, rating, employeeId ) {
@@ -90,13 +90,25 @@ services
         // and standard prototypal inheritance.
         Employee.prototype = {
 
+            saveEmployeeState : function(){
+                EmployeesService.edit(this)
+                .then(function(data) {
+                    },
+                    function(data){
+                        alert( 'Error: ' + data );
+                    }
+                );
+            },
+
             addUpVote: function() {
                 this.rating++;
+                this.saveEmployeeState();
             },
 
             addDownVote: function() {
                 if (this.rating > 0) {
                     this.rating--;
+                    this.saveEmployeeState();
                 }
             }
 
@@ -105,4 +117,4 @@ services
         // Return constructor
         return( Employee );
     }
-);
+]);

@@ -6,7 +6,8 @@
             <th>Name</th>
             <th>Salary</th>
             <th>Rating</th>
-            <th></th>
+            <th>Actions</th>
+            <th>Vote</th>
         </tr>
     </thead>
     <tbody>
@@ -16,6 +17,11 @@
             <td>{{empleado.salary}}</td>
             <td>{{empleado.rating}}</td>
             <td><a ng-href="/#/edit/{{empleado.id}}">Edit</a></td>
+            <td>
+                <vote item="$parent.empleado" ng-if="empleado.id">
+                    <!-- Only to be displayed if there is an user been edited. -->
+                </vote>
+            </td>
         </tr>
     </tbody>
 </table>
