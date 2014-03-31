@@ -157,7 +157,7 @@ directives
                     scope.$on('coordinateChanged', function(){
                         $timeout( function() {
                             // Timeout created to allow digest cycle to finish.
-                            scope.boxShadowStyle = shadowTarget.createShadow({left:ctrl.getX(), top: ctrl.getY()}); 
+                            scope.boxShadowStyle = shadowTarget.createShadow({left: ctrl.getX(), top: ctrl.getY()}); 
                         }, 0);
                     });
                 }
