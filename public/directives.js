@@ -144,8 +144,9 @@ directives
             restrict: 'E',
             replace: true,
             require: '^lighthouse',
+            transclude: true,
             scope:{},
-            template: '<div ng-style="boxShadowStyle">Target</div>',
+            template: '<div ng-style="boxShadowStyle" ng-transclude></div>',
             compile: function(elem, attrs, ctrl){             
 
                 return function(scope, elem, attrs, ctrl){
