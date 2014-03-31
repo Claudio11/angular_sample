@@ -194,10 +194,6 @@ directives
                     mouseY = parseInt(event.clientY, 10);
                     scope.$broadcast('coordinateChanged');
                 });
-
-                elem.bind('mouseleave', function(event){
-                    console.info('leaving');
-                });
             }
         }
 
