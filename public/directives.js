@@ -144,6 +144,7 @@ directives
             restrict: 'E',
             replace: true,
             require: '^lighthouse',
+            scope:{},
             template: '<div ng-style="boxShadowStyle">Target</div>',
             compile: function(elem, attrs, ctrl){             
 
@@ -178,7 +179,7 @@ directives
             restrict: 'EA',
             transclude: true,
             replace: true,
-            template: '<div class="container"><div class="shadow-element" ng-transclude></div></div>',
+            template: '<div class="container"><div ng-transclude></div></div>',
             controller: function(){
                 this.getX = function(){
                     return mouseX;

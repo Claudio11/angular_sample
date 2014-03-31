@@ -142,10 +142,12 @@ services
             createShadow: function(sourcePosition) {
                 var leftDifference = ( this.leftPosition - sourcePosition.left ) / 10;
                 var topDifference = ( this.topPosition - sourcePosition.top ) / 10;
-
-                var distanceBlur = Math.abs(leftDifference) + Math.abs(topDifference);
-
-                var boxShadowObject = {"box-shadow": leftDifference + "px " + topDifference + "px " + distanceBlur + "px 4px #ccc"}
+                var distanceBlur = ( Math.abs(leftDifference) + Math.abs(topDifference) ) * 0.7;
+                var boxShadowObject = {"box-shadow": leftDifference + "px " + 
+                                        topDifference + "px " + 
+                                        distanceBlur + "px " + 
+                                        "0px #ccc"}
+                
                 return boxShadowObject;
             }
 
