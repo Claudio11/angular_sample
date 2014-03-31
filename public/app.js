@@ -37,6 +37,10 @@ myAppModule.config(['$routeProvider', '$httpProvider',
             }
         }
       }).
+      when('/gallery', {
+        templateUrl: 'templates/gallery.html',
+        controller: 'EmployeesController'
+      }).
       otherwise({
         redirectTo: '/list'
       });

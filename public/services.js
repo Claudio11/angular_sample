@@ -119,6 +119,41 @@ services
     }
 ])
 
+.factory("Target", [
+    
+    function() {
+
+        // Define the constructor function.
+        function Target(width, height, leftPosition, topPosition) {
+            this.width = width;
+            this.height = height;
+            this.leftPosition = leftPosition + Math.round(this.width);
+            this.topPosition = topPosition + Math.round(this.height);
+        }
+
+
+        Target.prototype = {
+
+            /**
+             *  Method in charge of create the current shadow to display in this.
+             *
+             *  @param lightPosition Object with the following format: {left: xx, top:yy}
+             */
+            createShadow: function(lightPosition) {
+                console.info(lightPosition);
+
+
+                //box-shadow: 3px 3px 5px 6px #ccc;
+                return {"color":"red"};
+            }
+
+        };
+
+        // Return constructor
+        return( Target );
+    }
+])
+
 .factory('httpRequestInterceptor', function ($rootScope) {
 
     // Interceptors to load a spinner while waiting for a response.

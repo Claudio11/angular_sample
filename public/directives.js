@@ -133,4 +133,73 @@ directives
 
     }
 ])
+
+.directive('targetElement', [ 'Target', '$timeout',
+    function(Target, $timeout){
+        // Directive in charge of create an inner element that will have a shadow from the light of the cursor,
+        // (the cursor is the lighthouse), when the cursor is over the directive (in this version the element cannot change positions,
+        //  TODO: make that it can change positions).
+
+        return{
+            restrict: 'E',
+            replace: true,
+            require: '^lighthouse',
+            template: '<div ng-style="boxShadowStyle">Target</div>',
+            compile: function(elem, attrs, ctrl){             
+
+                return function(scope, elem, attrs, ctrl){
+                    var el = elem[0];
+                    var shadowTarget = new Target(el.clientWidth, 
+                                                  el.clientHeight, 
+                                                  el.getBoundingClientRect().left, 
+                                                  el.getBoundingClientRect().top);
+
+                    scope.$on('coordinateChanged', function(){
+                        $timeout( function() {
+                            // Timeout created to allow digest cycle to finish.
+                            scope.boxShadowStyle = shadowTarget.createShadow({left:ctrl.getX(), top: ctrl.getY()}); 
+                        }, 0);
+                    });
+                }
+            }
+        }
+
+    }
+])
+
+.directive('lighthouse', [ 
+    function(){
+        // Directive in charge of create an inner element that will have a shadow from the light of the cursor,
+        // (the cursor is the lighthouse), when the cursor is over the directive.
+        var mouseX,
+            mouseY;
+
+        return{
+            restrict: 'EA',
+            transclude: true,
+            replace: true,
+            template: '<div class="container"><div class="shadow-element" ng-transclude></div></div>',
+            controller: function(){
+                this.getX = function(){
+                    return mouseX;
+                }
+                this.getY = function(){
+                    return mouseY;
+                }
+            },
+            link: function(scope, elem, attrs){
+                elem.bind('mousemove', function(event){
+                    mouseX = parseInt(event.clientX, 10);
+                    mouseY = parseInt(event.clientY, 10);
+                    scope.$broadcast('coordinateChanged');
+                });
+
+                elem.bind('mouseleave', function(event){
+                    console.info('leaving');
+                });
+            }
+        }
+
+    }
+])
 ;
