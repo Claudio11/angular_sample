@@ -137,9 +137,7 @@ directives
 .directive('targetElement', [ 'Target', '$timeout',
     function(Target, $timeout){
         // Directive in charge of create an inner element that will have a shadow from the light of the cursor,
-        // (the cursor is the lighthouse), when the cursor is over the directive (in this version the element cannot change positions,
-        //  TODO: make that it can change positions).
-
+        // (the cursor is the lighthouse), when the cursor is over the directive (in this version the element cannot change positions.
         return{
             restrict: 'E',
             replace: true,
@@ -172,8 +170,8 @@ directives
 
 .directive('lighthouse', [ 
     function(){
-        // Directive in charge of create an inner element that will have a shadow from the light of the cursor,
-        // (the cursor is the lighthouse), when the cursor is over the directive.
+        // Directive that allows a cursor that "hovers" it, to becomes a light source in 
+        // which every targetElement inside of it will have a shadow.
         var mouseX,
             mouseY;
 
