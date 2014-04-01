@@ -151,10 +151,11 @@ directives
 
                 return function(scope, elem, attrs, ctrl){
                     var el = elem[0];
-                    var shadowTarget = new Target(el.clientWidth, 
-                                                  el.clientHeight, 
-                                                  el.getBoundingClientRect().left, 
-                                                  el.getBoundingClientRect().top);
+                    var elemRectangle = el.getBoundingClientRect();
+                    var shadowTarget = new Target(elemRectangle.width, 
+                                                  elemRectangle.height, 
+                                                  elemRectangle.left, 
+                                                  elemRectangle.top);
 
                     scope.$on('coordinateChanged', function(){
                         $timeout( function() {

@@ -137,16 +137,17 @@ services
             /**
              *  Method in charge of create the current shadow to display in this.
              *
-             *  @param sourcePosition Object with the following format: {left: xx, top:yy}
+             *  @param sourcePosition Object with the position of the source light
+             *  with the following format: {left: xx, top:yy}
              */
             createShadow: function(sourcePosition) {
                 var leftDifference = ( this.leftPosition - sourcePosition.left ) / 10;
                 var topDifference = ( this.topPosition - sourcePosition.top ) / 10;
                 var distanceBlur = ( Math.abs(leftDifference) + Math.abs(topDifference) ) * 0.7;
                 var boxShadowObject = {"box-shadow": leftDifference + "px " + 
-                                        topDifference + "px " + 
-                                        distanceBlur + "px " + 
-                                        "0px #ccc"}
+                                                     topDifference + "px " + 
+                                                     distanceBlur + "px " + 
+                                                     "0px #ccc"}
                 
                 return boxShadowObject;
             }
