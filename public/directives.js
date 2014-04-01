@@ -90,7 +90,7 @@ directives
                 mySearch: '@'
             },
             controller: function($scope, $element, $attrs) {
-                $scope.items = angular.fromJson($scope.items);
+                //$scope.items = angular.fromJson($scope.items);
                 $scope.listVisible = false;
 
                 $scope.$watch('mySearch', function(){
@@ -194,6 +194,76 @@ directives
                     mouseY = parseInt(event.clientY, 10);
                     scope.$broadcast('coordinateChanged');
                 });
+            }
+        }
+
+    }
+])
+
+
+/*
+
+
+
+
+.directive('snake', [ 'Target', '$timeout',
+    function(Target, $timeout){
+        // Snake element, it knows how to draw and move itself.
+        return{
+            require: '^snakeGrid',
+            transclude: true,
+            scope:{},
+            template: '<div ng-style="boxShadowStyle" ng-transclude></div>',
+            link: function(scope, elem, attrs, ctrl){             
+
+                
+            }
+        }
+
+    }
+])*/
+
+.directive('snakeGrid', [ 
+    function(){
+        // Directive that plays a snake game.
+
+        window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+                              window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+
+
+        var start = null;
+
+        var step = function (timestamp) {
+            var progress;
+            if (start === null) start = timestamp;
+            progress = timestamp - start;
+            
+
+
+            if (progress < 2000) {
+                requestAnimationFrame(step);
+            }
+        }
+
+
+        return{
+            restrict: 'E',
+            replace:true,
+            templateUrl: '/templates/grid.html',
+            link: function(scope, elem, attrs){
+                console.info(elem)
+                var ctx = elem[0].getContext('2d');
+
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+
+                //lastX = lastX + 10;
+                ctx.lineTo(40, 50);
+                ctx.stroke();
+
+                scope.start = function(){
+                    requestAnimationFrame(step);
+                }
             }
         }
 

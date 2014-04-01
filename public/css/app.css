@@ -140,6 +140,18 @@ a{
  opacity: 1;
 }
 
+/* Snake styles */
+#snakeGrid{
+  border: solid 1px black;
+  width: 300px;
+  height: 300px;
+  border-collapse: collapse
+}
+
+  #snakeGrid td{
+    border: solid 1px #aaa;
+  }
+
 
 
     /* Bubble text */
